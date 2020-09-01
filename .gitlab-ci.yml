@@ -1,0 +1,14 @@
+stages:
+  - deploy
+
+test:
+  stage: deploy
+  script:
+    - yarn2 install
+    - npm run build
+    - rsync -ravq dist/ /data_b/work/leetcode2020
+  tags:
+    - panther-web2
+  only:
+    - branches
+
